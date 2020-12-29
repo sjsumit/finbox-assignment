@@ -28,11 +28,16 @@ function AddExpenses(props) {
 
   const[paidBill,setPaidBill]=useState(0);
   const[totalBill,setTotalBill]=useState(0);
+  const[equality,setEquality]=useState(true);
+
   let newTotal=0;
 
 
   const handleSubmit = (event) => {
-
+    if(totalBill!==paidBill){
+      setEquality(false);
+      return;
+    }
     event.preventDefault();
     props.history.push({pathname:'/dashboard',
     inputFields});
@@ -112,7 +117,7 @@ function AddExpenses(props) {
         ))}
         <h3>Paid Bill: {paidBill}</h3>
         <br/>
-          
+        {!equality ? <h6>Total Bill and Paid Bill doesn't match</h6>: null}     
         <Button
           className={classes.button}
           variant="contained" 
