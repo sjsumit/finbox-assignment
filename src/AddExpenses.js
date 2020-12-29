@@ -43,14 +43,14 @@ function AddExpenses(props) {
       if(id === i.id) {
         i[event.target.name] = event.target.value
       }
-    if(i.name==="paid"){
-      newTotal+=i.value;
+      newTotal+=Number(i.paid);
       setPaidBill(newTotal);
-    }
+      
       return i;
     })
     
     setInputFields(newInputFields);
+    
   }
 
   const handleAddFields = () => {
